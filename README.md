@@ -64,6 +64,8 @@ curl -X POST "http://localhost:8080/loans?loanAmount=10000&term=12"
 }
 ```
 
+**Response `400 Bad request`** — returned when invalid loan data is provided.
+
 ---
 
 #### Get a Loan
@@ -137,7 +139,9 @@ curl -X POST "http://localhost:8080/payments?loanId=LOAN_1A2B3C4D&paymentAmount=
 }
 ```
 
-**Response `400 Bad Request`** — returned when the payment amount exceeds the outstanding loan balance.
+**Response `404 Not Found`** — returned when no loan exists with the given loanId.
+
+**Response `400 Bad Request`** — returned when the payment amount exceeds the outstanding loan balance or when invalid payment data is provided.
 
 **Response `409 Conflict`** — returned when the loan has already been fully settled.
 
